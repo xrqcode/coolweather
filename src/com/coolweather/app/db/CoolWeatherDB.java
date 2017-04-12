@@ -95,7 +95,7 @@ public class CoolWeatherDB {
 	/**
 	 * 从数据库读取某省下所有的城市信息
 	 */
-	public List<City> loudCities(int provinceId) {
+	public List<City> loadCities(int provinceId) {
 		List<City> list = new ArrayList<City>();
 		Cursor cursor = db 
 				.query("City", null, "province_id = ?", 
@@ -121,7 +121,7 @@ public class CoolWeatherDB {
 			ContentValues values = new ContentValues();
 			values.put("county_name", county.getCountyName());
 			values.put("county_code", county.getCountyCode());
-			values.put("county_id", county.getCityId());
+			values.put("city_id", county.getCityId());
 			db.insert("County", null, values);
 		}
 	}
@@ -129,7 +129,7 @@ public class CoolWeatherDB {
 	/**
 	 * 从数据库读取某省下所有的城市信息
 	 */
-	public List<County> loudCounties(int cityId) {
+	public List<County> loadCounties(int cityId) {
 		List<County> list = new ArrayList<County>();
 		Cursor cursor = db 
 				.query("County", null, "city_id = ?", 
